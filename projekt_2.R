@@ -147,3 +147,8 @@ lda_plot <- cbind(train, predict(model)$x)
 ggplot(lda_plot, aes(LD1, LD2)) +
   geom_point(aes(color = quality))
 
+
+
+
+  
+
