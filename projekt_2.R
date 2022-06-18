@@ -147,8 +147,15 @@ lda_plot <- cbind(train, predict(model)$x)
 ggplot(lda_plot, aes(LD1, LD2)) +
   geom_point(aes(color = quality))
 
+str(predicted)
 
 
 
-  
+library(caret)
+conf <- table(list(predicted$class, test$quality))
+
+confusionMatrix(conf, mode = 'everything', positive = '1')
+
+
+
 

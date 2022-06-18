@@ -16,6 +16,7 @@ wine.subset.norm <- as.data.frame(lapply(wine.subset[,1:11], normalize))
 head(wine.subset.norm)
 
 set.seed(123)
+
 dat.d <- sample(1:nrow(wine.subset.norm), size=nrow(wine.subset.norm)*0.7, replace = F)
 
 train.wine <- wine.subset[dat.d,]
@@ -55,4 +56,7 @@ for (i in 1:34) {
 
 plot(k.optm, type = "b", xlab = "K-Value", ylab = "Accuracy level")
 
-knn(train = train.wine, test = test.wine, cl = train.wine_labels, k = 1)
+knn.1 <- knn(train = train.wine, test = test.wine, cl = train.wine_labels, k = 1)
+
+confusionMatrix(table(knn.1, test.wine_labels), mode = 'everything', positive = '1')
+
